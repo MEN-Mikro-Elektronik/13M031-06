@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Klaus Popp (MEN Mikro Elektronik GmbH) -->
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="packagedesc.xsd">
+	<name>13m03106</name>
+	<description>MDIS5 driver package for MEN M31/M32/M82 M-Module</description>
+	<date>2010-03-11</date>
+	<revision>2.1</revision>
+	<docroot>DRIVERS/MDIS_LL/M031/DOC/main.html</docroot>
+	<modellist>
+		<model>
+			<hwname>M31</hwname>
+			<description>16 Binary Inputs</description>
+			<devtype>MDIS</devtype>
+			<autoid>
+				<mmoduleid>0x5346001f</mmoduleid>
+			</autoid>
+			<busif>M-Module</busif>
+		</model>
+		<model>
+			<hwname>M32</hwname>
+			<description>16 Binary Inputs</description>
+			<devnameprefix>M32</devnameprefix>
+			<devtype>MDIS</devtype>
+			<autoid>
+				<mmoduleid>0x53460020</mmoduleid>
+			</autoid>
+			<busif>M-Module</busif>
+		</model>
+		<model>
+			<hwname>M82</hwname>
+			<description>16 Binary Inputs</description>
+			<devnameprefix>M82</devnameprefix>
+			<devtype>MDIS</devtype>
+			<autoid>
+				<mmoduleid>0x53460052</mmoduleid>
+			</autoid>
+			<busif>M-Module</busif>
+		</model>
+	</modellist>
+	<settinglist>
+		<setting>
+			<name>ID_CHECK</name>
+			<description>Define wether M-Module ID-PROM is checked</description>
+			<type>U_INT32</type>
+			<defaultvalue>1</defaultvalue>
+			<choises>
+				<choise>
+					<value>1</value>
+					<description>enable</description>
+				</choise>
+				<choise>
+					<value>0</value>
+					<description>disable -- ignore IDPROM</description>
+				</choise>
+			</choises>
+		</setting>
+	</settinglist>
+	<swmodulelist>
+		<swmodule>
+			<name>m31</name>
+			<description>Driver for M31</description>
+			<type>Low Level Driver</type>
+			<makefilepath>M031/DRIVER/COM/driver.mak</makefilepath>
+		</swmodule>
+		<swmodule>
+			<name>m31_simp</name>
+			<description>Simple example program for the M31 driver</description>
+			<type>Driver Specific Tool</type>
+			<makefilepath>M031/EXAMPLE/M31_SIMP/COM/program.mak</makefilepath>
+		</swmodule>
+		<swmodule>
+			<name>m31_sig</name>
+			<description>Demonstrates the usage of signals with the M31 driver</description>
+			<type>Driver Specific Tool</type>
+			<makefilepath>M031/EXAMPLE/M31_SIG/COM/program.mak</makefilepath>
+		</swmodule>
+	</swmodulelist>
+</package>

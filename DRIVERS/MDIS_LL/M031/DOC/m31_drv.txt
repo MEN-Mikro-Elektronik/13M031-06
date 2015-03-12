@@ -1,0 +1,364 @@
+Function Description
+====================
+Mon May  3 14:11:47 CEST 2004
+ 
+Overview of all Functions
+-------------------------
+
+M31_GetEntry           - Initialize driver's branch table 
+M31_Init               - Allocate and return low-level handle, initialize hardware 
+M31_Exit               - De-initialize hardware and clean up memory 
+M31_Read               - Reads the state of the current channel. 
+M31_Write              - Write value to channel (unused) 
+M31_SetStat            - Set driver status 
+M31_GetStat            - Get driver status 
+M31_BlockRead          - Read the state of all 16 channels 
+M31_BlockWrite         - Write data block to device (unused) 
+M31_Irq                - Interrupt service routine 
+M31_Info               - Get driver info 
+ 
+
+Function M31_GetEntry()
+-----------------------
+
+Syntax:
+    #ifdef _ONE_NAMESPACE_PER_DRIVER_
+        extern void LL_GetEntry( LL_ENTRY* drvP )
+    #else
+        extern void GetEntry( LL_ENTRY* drvP )
+    #endif
+
+Description:
+    Initialize driver's branch table
+
+Input:
+    -
+
+Output:
+    drvP  pointer to the initialized branch table structure
+
+
+Function M31_Init()
+-------------------
+
+Syntax:
+    static int32 M31_Init(
+        DESC_SPEC       *descP,
+        OSS_HANDLE      *osHdl,
+        MACCESS         *maHdl,
+        OSS_SEM_HANDLE  *devSemHdl,
+        OSS_IRQ_HANDLE  *irqHdl,
+        LL_HANDLE       **llHdlP
+    )
+
+Description:
+    Allocate and return low-level handle, initialize hardware
+
+    The following descriptor keys are used:
+
+    Descriptor key        Default            Range
+    --------------------  -----------------  -------------
+    DEBUG_LEVEL_DESC      OSS_DBG_DEFAULT    see dbg.h
+    DEBUG_LEVEL           OSS_DBG_DEFAULT    see dbg.h
+    ID_CHECK              1                  0 or 1 
+
+Input:
+    descSpec   pointer to descriptor data
+    osHdl      oss handle
+    maHdl      hardware access handle
+    devSemHdl  device semaphore handle
+    irqHdl     irq handle
+
+Output:
+    llHdlP     pointer to low-level driver handle
+    return     success (0) or error code
+
+
+Function M31_Exit()
+-------------------
+
+Syntax:
+    static int32 M31_Exit(
+       LL_HANDLE    **llHdlP
+    )
+
+Description:
+    De-initialize hardware and clean up memory
+
+Input:
+    llHdlP    pointer to low-level driver handle
+
+Output:
+    return    success (0) or error code
+
+
+Function M31_Read()
+-------------------
+
+Syntax:
+    static int32 M31_Read(
+        LL_HANDLE   *llHdl,
+        int32       ch,
+        int32       *valueP
+    )
+
+Description:
+    Reads the state of the current channel.
+
+    Bit 0 of valueP represents the state of the current channel.
+
+Input:
+    llHdl    low-level handle
+    ch       current channel
+
+Output:
+    valueP   read value
+    return   success (0) or error code
+
+
+Function M31_Write()
+--------------------
+
+Syntax:
+    static int32 M31_Write(
+        LL_HANDLE   *llHdl,
+        int32       ch,
+        int32       value
+    )
+
+Description:
+    Write value to channel (unused)
+
+Input:
+    llHdl			low-level handle
+    ch				current channel
+    value		    value to write 
+
+Output:
+    return   ERR_LL_ILL_FUNC
+
+
+Function M31_SetStat()
+----------------------
+
+Syntax:
+    static int32 M31_SetStat(
+        LL_HANDLE   *llHdl,
+        int32       code,
+        int32       ch,
+        INT32_OR_64 value32_or_64
+    )
+
+Description:
+    Set driver status
+
+    The following status codes are supported:
+
+    Code                 Description                Values
+    -------------------  -------------------------  ----------
+    M_LL_DEBUG_LEVEL     driver debug level         see dbg.h
+    M_LL_CH_DIR          channel direction          M_CH_IN
+    M_LL_IRQ_COUNT       interrupt counter          0..max
+    M_MK_IRQ_ENABLE      irq disable/enable         0..1
+    M31_SIGSET           set signal                 1..max
+    M31_SIGCLR           clear signal               -
+    M31_HYS_MODE (M82)   hysteresis of curr chan    0..1
+    -------------------  -------------------------  ----------
+
+    M31_SIGSET installs a user signal with the specified signal
+      number. The signal will be sent to the caller if an
+      interrupt is triggered (if any input level changes and the
+      interrupt is enabled).
+
+    M31_SIGCLR deinstalls the user signal.
+
+    M31_HYS_MODE sets the hysteresis mode of the current channel:
+      0 = Hysteresis Mode B; 5.5V..15.5V
+      1 = Hysteresis Mode A; 5.5V..9.5V
+      This SetStat code can only be used for M82 M-Modules but
+      not for M31/M32 M-Modules.
+
+Input:
+    llHdl				low-level handle
+    code				status code
+    ch					current channel
+    value32_or_64P      data or pointer to block data struct (M_SG_BLOCK)
+						for block status codes
+
+Output:
+    return     success (0) or error code
+
+
+Function M31_GetStat()
+----------------------
+
+Syntax:
+    static int32 M31_GetStat(
+        LL_HANDLE   *llHdl,
+        int32       code,
+        int32       ch,
+        INT32_OR_64  *value32_or_64P
+    )
+
+Description:
+    Get driver status
+
+    The following status codes are supported:
+
+    Code                 Description                Values
+    -------------------  -------------------------  ----------
+    M_LL_DEBUG_LEVEL     driver debug level         see dbg.h
+    M_LL_CH_NUMBER       number of channels         16
+    M_LL_CH_DIR          direction of curr chan     M_CH_IN
+    M_LL_CH_LEN          length of curr chan [bits] 1..max
+    M_LL_CH_TYP          description of curr chan   M_CH_BINARY
+    M_LL_IRQ_COUNT       interrupt counter          0..max
+    M_LL_ID_CHECK        EEPROM is checked          0..1
+    M_LL_ID_SIZE         EEPROM size [bytes]        128
+    M_LL_BLK_ID_DATA     EEPROM raw data            -
+    M_MK_BLK_REV_ID      ident function table ptr   -
+    M31_SIGSET           get signal                 1..max
+    M31_CHANGE_FLAGS     get change flags           0x00..0xff
+    M31_HYS_MODE (M82)   hysteresis of curr chan    0..1
+    -------------------  -------------------------  ----------
+
+    M31_SIGSET gets the signal number of the installed user
+      signal. If no signal was installed it yields the value 0.
+
+    M31_CHANGE_FLAGS gets 16 flags which inform about level
+      changes of each channel if the interrupt is enabled.
+      Bits 15..0 of the bit mask (flags) correspond to channels
+      15..0. A flag set to 1 indicates that the level of the
+      belonging channel was changed from 0 to 1 or vice versa
+      (regardless how often). The flags are reset to 0 after this
+      GetStat call or when the interrupt is enabled (SetStat
+      code M_MK_IRQ_ENABLE).
+
+    M31_HYS_MODE gets the hysteresis mode of the current channel:
+      0 = Hysteresis Mode B; 5.5V..15.5V
+      1 = Hysteresis Mode A; 5.5V..9.5V
+      This GetStat code can only be used for M82 M-Modules but
+      not for M31/M32 M-Modules.
+
+Input:
+    llHdl      low-level handle
+    code       status code
+    ch         current channel
+    valueP     pointer to block data struct (M_SG_BLOCK) 
+                for block status codes
+
+Output:
+    value32_or_64P		data pointer or ptr to block data struct (M_SG_BLOCK)
+						for block status codes
+    return				success (0) or error code
+
+
+Function M31_BlockRead()
+------------------------
+
+Syntax:
+    static int32 M31_BlockRead(
+         LL_HANDLE  *llHdl,
+         int32      ch,
+         void       *buf,
+         int32      size,
+         int32      *nbrRdBytesP
+    )
+
+Description:
+    Read the state of all 16 channels
+
+    Bits 15..0 of the first two bytes of the data buffer (buf)
+    correspond to channels 15..0.
+
+Input:
+    llHdl        low-level handle
+    ch           current channel
+    buf          data buffer
+    size         data buffer size (minimum: two bytes)
+
+Output:
+    nbrRdBytesP  number of read bytes
+    return       success (0) or error code
+
+
+Function M31_BlockWrite()
+-------------------------
+
+Syntax:
+    static int32 M31_BlockWrite(
+         LL_HANDLE  *llHdl,
+         int32      ch,
+         void       *buf,
+         int32      size,
+         int32      *nbrWrBytesP
+    )
+
+Description:
+    Write data block to device (unused)
+
+Input:
+    llHdl        low-level handle
+    ch           current channel
+    buf          data buffer
+    size         data buffer size
+
+Output:
+    nbrWrBytesP  number of written bytes
+    return       ERR_LL_ILL_FUNC
+
+
+Function M31_Irq()
+------------------
+
+Syntax:
+    static int32 M31_Irq(
+       LL_HANDLE *llHdl
+    )
+
+Description:
+    Interrupt service routine
+
+    The interrupt is triggered when any input level changes.
+    For each channel a level change will be stored in a flag.
+    If a user signal is installed, the signal will be sent.
+
+    If the driver can detect the interrupt cause it returns
+    LL_IRQ_DEVICE or LL_IRQ_DEV_NOT, otherwise LL_IRQ_UNKNOWN.
+
+Input:
+    llHdl    low-level handle
+
+Output:
+    return   LL_IRQ_UNKNOWN
+
+
+Function M31_Info()
+-------------------
+
+Syntax:
+    static int32 M31_Info(
+       int32  infoType,
+       ...
+    )
+
+Description:
+    Get driver info
+
+    The following info codes are supported:
+
+    Code                      Description
+    ------------------------  -----------------------------
+    LL_INFO_HW_CHARACTER      hardware characteristics
+    LL_INFO_ADDRSPACE_COUNT   nr of required address spaces
+    LL_INFO_ADDRSPACE         address space type
+    LL_INFO_IRQ               interrupt required
+    LL_INFO_LOCKMODE          process locking required (LL_LOCK_xxx).
+
+Input:
+    infoType     info code
+    ...          argument(s)
+
+Output:
+    return       success (0) or error code
+

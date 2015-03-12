@@ -1,0 +1,41 @@
+===== [ History of fileset ART/13M031-06/13M031-06 ] =====
+
+
+-----[ Revision 2.1 ]-----
+[ 2010-03-11 11:09:24 by amorbach ]
+R: Porting to MDIS5
+M: changed according to MDIS Porting Guide 0.8
+
+-----[ Revision 2.0 ]-----
+[ 2004-05-03 14:51:08 by cs ]
+M82 support added
+M31_HYS_MODE set/getstat for M82 implemented
+Minor changes for MDIS4/2004 conformity
+
+-----[ Revision 1.2 ]-----
+[ 2001-08-22 17:18:37 by Schmidt ]
+*** ADDED FILES ***
+File /_CVS_/COM/DRIVERS/MDIS_LL/M031/DOC/m31_drv.html
+File /_CVS_/COM/DRIVERS/MDIS_LL/M031/DOC/main.html
+File /_CVS_/COM/DRIVERS/MDIS_LL/M031/DRIVER/COM/driver_sw.mak
+File /_CVS_/COM/DRIVERS/MDIS_LL/M031/DRIVER/COM/m31_sw_max.dsc
+File /_CVS_/COM/DRIVERS/MDIS_LL/M031/DRIVER/COM/m31_sw_min.dsc
+File /_CVS_/COM/DRIVERS/MDIS_LL/M031/EXAMPLE/M31_SIG/COM/m31_sig.c
+File /_CVS_/COM/DRIVERS/MDIS_LL/M031/EXAMPLE/M31_SIG/COM/program.mak
+*** CHANGED FILES ***
+File /_CVS_/COM/DRIVERS/MDIS_LL/M031/DRIVER/COM/m31_drv.c RCS 1.3 -> RCS 1.5
+   1) interrupt support added
+   2) variation support added
+   cosmetics
+File /_CVS_/COM/DRIVERS/MDIS_LL/M031/EXAMPLE/M31_SIMP/COM/m31_simp.c RCS 1.2 -> RCS 1.4
+   set current channel to 0 added
+   cosmetics
+File /_CVS_/COM/INCLUDE/m31_drv.h RCS 2.1 -> RCS 2.2
+   1) function prototype declarations changed to static
+   2) M31_SIGSET/CLR status codes added
+   3) driver variant support added
+
+-----[ Revision 1.1 ]-----
+[ 1998-07-31 16:11:57 by Schmidt ]
+Added by mcvs
+
