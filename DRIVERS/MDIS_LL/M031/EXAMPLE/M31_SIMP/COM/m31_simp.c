@@ -46,6 +46,7 @@
 static char *RCSid="$Id: m31_simp.c,v 1.6 2010/03/11 10:43:03 amorbach Exp $";
 
 #include <stdio.h>
+#include <string.h>
 #include <MEN/men_typs.h>	/* men type definitions */
 #include <MEN/usr_oss.h>	/* user mode system services */
 #include <MEN/mdis_api.h>	/* mdis user interface */
