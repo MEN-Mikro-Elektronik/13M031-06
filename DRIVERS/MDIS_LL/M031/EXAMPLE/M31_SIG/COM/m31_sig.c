@@ -28,8 +28,6 @@
  *---------------------------------------------------------------------------
  * (c) Copyright 2001 by MEN mikro elektronik GmbH, Nuernberg, Germany 
  ****************************************************************************/
- 
-static const char RCSid[]="$Id: m31_sig.c,v 1.2 2010/03/11 10:42:58 amorbach Exp $";
 
 #include <stdio.h>
 #include <string.h>
