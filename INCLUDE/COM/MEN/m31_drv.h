@@ -13,27 +13,23 @@
  *     Switches: _ONE_NAMESPACE_PER_DRIVER_
  *               _LL_DRV_
  *
- *-------------------------------[ History ]---------------------------------
- *
- * $Log: m31_drv.h,v $
- * Revision 2.4  2010/03/11 10:43:47  amorbach
- * R: driver ported to MDIS5, new MDIS_API and men_typs
- * M: for backward compatibility to MDIS4 optionally define new types
- *
- * Revision 2.3  2004/05/03 14:49:52  cs
- * M31_HYS_MODE set/getstat for M82 added
- *
- * Revision 2.2  2001/08/22 17:15:41  Schmidt
- * 1) function prototype declarations changed to static
- * 2) M31_SIGSET/CLR status codes added
- * 3) driver variant support added
- *
- * Revision 2.1  1998/07/21 16:37:35  Schmidt
- * Added by mcvs
- *
  *---------------------------------------------------------------------------
  * (c) Copyright 1998 by MEN mikro elektronik GmbH, Nuernberg, Germany
  ****************************************************************************/
+/*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 #ifndef _M31_LLDRV_H
 #define _M31_LLDRV_H

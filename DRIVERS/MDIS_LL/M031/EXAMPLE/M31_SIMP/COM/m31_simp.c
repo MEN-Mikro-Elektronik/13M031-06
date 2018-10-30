@@ -13,35 +13,23 @@
  *     Required: -
  *     Switches: NO_MAIN_FUNC
  *
- *-------------------------------[ History ]---------------------------------
- *
- * $Log: m31_simp.c,v $
- * Revision 1.6  2010/03/11 10:43:03  amorbach
- * R: Porting to MDIS5
- * M: changed according to MDIS Porting Guide 0.8
- *
- * Revision 1.5  2004/05/03 14:49:40  cs
- * changed function prototype to static
- * added include m31_drv.h
- *
- * Revision 1.4  2001/08/22 17:15:32  Schmidt
- * set current channel to 0 added
- *
- * Revision 1.3  1999/07/21 14:24:51  Franke
- * cosmetics
- *
- * Revision 1.2  1998/07/24 15:15:36  see
- * bug fixed: M_getblock returnes wrong value under MOTOROLA system,
- * since bufP cast was not portable
- * M_close error check was wrong
- * read all channels with M_read instead 0..7
- *
- * Revision 1.1  1998/07/21 16:37:28  Schmidt
- * Added by mcvs
- *
  *---------------------------------------------------------------------------
  * (c) Copyright 1998 by MEN mikro elektronik GmbH, Nuernberg, Germany 
  ****************************************************************************/
+/*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 static char *RCSid="$Id: m31_simp.c,v 1.6 2010/03/11 10:43:03 amorbach Exp $";
 

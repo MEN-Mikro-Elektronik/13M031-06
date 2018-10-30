@@ -37,47 +37,23 @@
  *     Required: -
  *     Switches: _ONE_NAMESPACE_PER_DRIVER_
  *
- *-------------------------------[ History ]---------------------------------
- *
- * $Log: m31_drv.c,v $
- * Revision 1.7  2010/03/11 10:42:49  amorbach
- * R: Porting to MDIS5
- * M: changed according to MDIS Porting Guide 0.8
- *
- * Revision 1.6  2004/05/03 14:49:28  cs
- * - M82 support added
- * - M31_HYS_MODE set/getstat for M82 implemented
- * - lock mode processing in M31_Info added
- * - minor typecasts for Win2k compiler compatibility
- *
- * Revision 1.5  2001/08/22 17:15:18  Schmidt
- * 1) interrupt support added
- * 2) variation support added
- *
- * Revision 1.4  1999/07/21 14:58:49  Franke
- * cosmetics
- *
- * Revision 1.3  1998/07/31 16:11:23  Schmidt
- * M31_Info: LL_INFO_ADDRSPACE: *addrSizeP is now 0x100
- * error messages are now with prefix LL
- * idFuncTbl is now located in LL_HANDLE
- * idFuncTbl is now initialized in Init
- * IdFuncTbl() removed
- *
- * Revision 1.2  1998/07/24 15:15:29  see
- * wrong static const char *IdentString type changed
- * M31_Init: ID_CHECK default is now 1
- * M31_Init: error message was wrong
- * M31_Init: print detected module
- * M31_Getstat: M_LL_ID_SIZE using MOD_ID_SIZE
- * M31_Getstat: M_LL_BLK_ID_DATA added
- *
- * Revision 1.1  1998/07/21 16:37:14  Schmidt
- * Added by mcvs
- *
  *---------------------------------------------------------------------------
  * (c) Copyright 1998-2001 by MEN Mikro Elektronik GmbH, Nuremberg, Germany
  ****************************************************************************/
+/*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 static const char IdentString[]="M31 - m31 low level driver: $Id: m31_drv.c,v 1.7 2010/03/11 10:42:49 amorbach Exp $";
 
