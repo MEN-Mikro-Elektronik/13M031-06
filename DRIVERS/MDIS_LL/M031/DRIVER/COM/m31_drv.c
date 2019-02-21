@@ -38,7 +38,7 @@
  *     Switches: _ONE_NAMESPACE_PER_DRIVER_
  *
  *---------------------------------------------------------------------------
- * (c) Copyright 1998-2001 by MEN Mikro Elektronik GmbH, Nuremberg, Germany
+ * Copyright (c) 1998-2019, MEN Mikro Elektronik GmbH
  ****************************************************************************/
 /*
 * This program is free software: you can redistribute it and/or modify

@@ -6,22 +6,21 @@
 #  
 #    Description: Makefile definitions for the m31_simp example program
 #                      
-#---------------------------------[ History ]---------------------------------
-#
-#   $Log: program.mak,v $
-#   Revision 1.3  2004/05/03 14:49:42  cs
-#   added include mdis_err.h
-#   removed switch MAK_OPTIM
-#
-#   Revision 1.2  2001/08/22 17:15:34  Schmidt
-#   m31_drv.h added
-#
-#   Revision 1.1  1998/07/21 16:37:25  Schmidt
-#   Added by mcvs
-#
 #-----------------------------------------------------------------------------
-#   (c) Copyright 1998 by MEN mikro elektronik GmbH, Nuernberg, Germany 
+#   Copyright (c) 1998-2019, MEN Mikro Elektronik GmbH
 #*****************************************************************************
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 MAK_NAME=m31_simp
 
