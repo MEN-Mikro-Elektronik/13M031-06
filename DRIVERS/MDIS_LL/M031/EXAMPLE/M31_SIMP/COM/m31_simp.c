@@ -5,8 +5,6 @@
  ****************************************************************************
  *  
  *       Author: ds
- *        $Date: 2010/03/11 10:43:03 $
- *    $Revision: 1.6 $
  *
  *  Description: Simple example program for the M31 MDIS driver
  *                      
@@ -31,7 +29,6 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-static char *RCSid="$Id: m31_simp.c,v 1.6 2010/03/11 10:43:03 amorbach Exp $";
 
 #include <stdio.h>
 #include <string.h>
@@ -40,6 +37,8 @@ static char *RCSid="$Id: m31_simp.c,v 1.6 2010/03/11 10:43:03 amorbach Exp $";
 #include <MEN/mdis_api.h>	/* mdis user interface */
 #include <MEN/mdis_err.h>	/* mdis error definitions */
 #include <MEN/m31_drv.h>
+
+static const char IdentString[]=MENT_XSTR(MAK_REVISION);
 
 /*-----------------------------------------+
 |  PROTOTYPES                              |
@@ -103,7 +102,7 @@ int M31_Simple( char *devName )
 	printf("m31_simp - simple example program for the M31 module\n");
     printf("====================================================\n\n");
 
-    printf("%s\n\n", RCSid);
+    printf("%s\n\n", IdentString);
 
     /*----------------------------------+  
     | M_open - open the device          |

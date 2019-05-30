@@ -1,11 +1,9 @@
 /*********************  P r o g r a m  -  M o d u l e ***********************
  *
  *         Name: m31_drv.c
- *      Project: M31 module driver (MDIS V4.x)
+ *      Project: M31 module driver 
  *
  *       Author: dieter.pfeuffer@men.de
- *        $Date: 2010/03/11 10:42:49 $
- *    $Revision: 1.7 $
  *
  *  Description: Low-level driver for M31/M32/M82 M-Modules
  *
@@ -54,8 +52,6 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
-static const char IdentString[]="M31 - m31 low level driver: $Id: m31_drv.c,v 1.7 2010/03/11 10:42:49 amorbach Exp $";
 
 #define _NO_LL_HANDLE		/* ll_defs.h: don't define LL_HANDLE struct */
 
@@ -121,6 +117,8 @@ typedef struct {
 /* include files which need LL_HANDLE */
 #include <MEN/ll_entry.h>   /* low-level driver branch table  */
 #include <MEN/m31_drv.h>    /* M31 driver header file */
+
+static const char IdentString[]=MENT_XSTR(MAK_REVISION);
 
 /*-----------------------------------------+
 |  PROTOTYPES                              |

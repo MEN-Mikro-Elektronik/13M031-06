@@ -1,8 +1,6 @@
 #***************************  M a k e f i l e  *******************************
 #
 #         Author: ds
-#          $Date: 2001/08/22 17:15:23 $
-#      $Revision: 1.2 $
 #
 #    Description: Makefile definitions for the M31 driver
 #
@@ -23,8 +21,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 MAK_NAME=m31
+# the next line is updated during the MDIS installation
+STAMPED_REVISION="13M031-06_02_04-1-g9a830e5-dirty_2019-05-10"
 
-MAK_SWITCH=$(SW_PREFIX)MAC_MEM_MAPPED
+DEF_REVISION=MAK_REVISION=$(STAMPED_REVISION)
+
+MAK_SWITCH=$(SW_PREFIX)MAC_MEM_MAPPED \
+		$(SW_PREFIX)$(DEF_REVISION)
 
 MAK_LIBS=$(LIB_PREFIX)$(MEN_LIB_DIR)/desc$(LIB_SUFFIX)     \
          $(LIB_PREFIX)$(MEN_LIB_DIR)/oss$(LIB_SUFFIX)      \

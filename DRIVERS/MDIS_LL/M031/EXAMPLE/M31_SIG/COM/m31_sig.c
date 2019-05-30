@@ -5,8 +5,6 @@
  ****************************************************************************
  *  
  *       Author: ds
- *        $Date: 2010/03/11 10:42:58 $
- *    $Revision: 1.2 $
  *
  *  Description: Signal example program for the M31 driver
  *
@@ -39,6 +37,8 @@
 #include <MEN/mdis_api.h>
 #include <MEN/usr_oss.h>
 #include <MEN/m31_drv.h>
+
+static const char IdentString[]=MENT_XSTR(MAK_REVISION);
 
 /*--------------------------------------+
 |   GLOBALS                             |

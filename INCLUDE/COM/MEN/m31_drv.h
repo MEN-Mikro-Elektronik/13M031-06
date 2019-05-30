@@ -3,8 +3,6 @@
  *         Name: m31_drv.h
  *
  *       Author: dieter.pfeuffer@men.de
- *        $Date: 2010/03/11 10:43:47 $
- *    $Revision: 2.4 $
  *
  *  Description: Header file for M31 driver
  *               - M31 specific status codes
