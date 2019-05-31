@@ -38,7 +38,6 @@
 #include <MEN/usr_oss.h>
 #include <MEN/m31_drv.h>
 
-static const char IdentString[]=MENT_XSTR(MAK_REVISION);
 
 /*--------------------------------------+
 |   GLOBALS                             |
